@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "serve ./src",
-    "build": "npm run serve"
+    "serve": "serve ./src"
   },
   "keywords": [],
   "author": "",
