@@ -1,5 +1,7 @@
 "use strict";
 
+import { randomLetters } from "./lib.js";
+
 const generatedPwEl = document.querySelector(".generated-pw");
 const generateBtnEl = document.querySelector(".generate-pw");
 const copyBtnEl = document.querySelector(".copy");
@@ -35,30 +37,12 @@ String.prototype.shuffle = function () {
 };
 
 function generateRandomPw() {
-  let str = "";
+  let result = "";
+  result =
+    randomLetters(2, alphabet) +
+    randomLetters(6, lowerAlphabet) +
+    randomLetters(4, numbers) +
+    randomLetters(1, chars);
 
-  for (let i = 0; i < 2; i++) {
-    randomLetter(alphabet);
-  }
-
-  for (let i = 0; i < 6; i++) {
-    randomLetter(lowerAlphabet);
-  }
-
-  for (let i = 0; i < 4; i++) {
-    randomLetter(numbers);
-  }
-
-  for (let i = 0; i < 1; i++) {
-    randomLetter(chars);
-  }
-
-  // get random char
-  function randomLetter(param) {
-    let random = Math.floor(Math.random() * param.length);
-    str = str + param.charAt(random);
-    return str;
-  }
-
-  return str.shuffle();
+  return result.shuffle();
 }
