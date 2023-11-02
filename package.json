@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "serve ./src",
-    "build": "mkdir -p dist && cp -r src/* dist"
+    "build": "mkdir -p dist && cp -r src/* dist && npm run serve"
   },
   "keywords": [],
   "author": "",
