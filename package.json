@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "serve": "serve ./src",
-    "build": "mkdir -p dist && cp -r src/* dist"
+    "build": "mkdir -p dist && cp -r src/* dist",
+    "e2e": "cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^13.4.0",
     "serve": "^14.2.1"
   }
 }
