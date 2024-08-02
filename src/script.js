@@ -1,48 +1,44 @@
-"use strict";
+'use strict';
 
-import { randomLetters } from "./lib.js";
+import { randomLetters } from './lib.js';
 
-const generatedPwEl = document.querySelector(".generated-pw");
-const generateBtnEl = document.querySelector(".generate-pw");
-const copyBtnEl = document.querySelector(".copy");
+const generatedPwEl = document.querySelector('.generated-pw');
+const generateBtnEl = document.querySelector('.generate-pw');
+const copyBtnEl = document.querySelector('.copy');
 
-// define characters
-let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let lowerAlphabet = alphabet.toLowerCase();
-var numbers = "0123456789";
-var chars = "!?/:;%$&*";
+let numbers = '0123456789';
+let chars = '!?/:;%$&*';
 
-generateBtnEl.addEventListener("click", (e) => {
+generateBtnEl.addEventListener('click', (e) => {
   e.preventDefault();
   generatedPwEl.textContent = generateRandomPw();
+});
 
-  copyBtnEl.addEventListener("click", (event) => {
-    event.preventDefault();
-    navigator.clipboard.writeText(generatedPwEl.textContent);
+copyBtnEl.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigator.clipboard.writeText(generatedPwEl.textContent).then(() => {
+    alert('Password copied to clipboard!');
   });
 });
 
-// generate shuffle method
 String.prototype.shuffle = function () {
-  let a = this.split(""),
+  let a = this.split(''),
     n = a.length;
 
   for (let i = n - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
-    let tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return a.join("");
+  return a.join('');
 };
 
 function generateRandomPw() {
-  let result = "";
-  result =
+  return (
     randomLetters(2, alphabet) +
     randomLetters(6, lowerAlphabet) +
     randomLetters(4, numbers) +
-    randomLetters(1, chars);
-
-  return result.shuffle();
+    randomLetters(1, chars)
+  ).shuffle();
 }
