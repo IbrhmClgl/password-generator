@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "serve ./src",
-    "build": "mkdir -p dist && cp -r src/* dist",
+    "serve": "serve ",
     "e2e": "cypress open"
   },
   "keywords": [],
